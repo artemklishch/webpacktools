@@ -7,6 +7,7 @@
   "devDependencies": {
     "@babel/preset-env": "^7.8.3",
     "jest": "^25.1.0",
+    "npm-run-all": "^4.1.5",
     "run-all": "^1.0.1",
     "sass": "^1.25.0"
   },
@@ -17,7 +18,7 @@
     "copy:html": "cp ./src/index.html ./dist/index.html",
     "copy:scripts": "cp -R ./src/scripts ./dist/scripts",
     "clean": "rm -rf ./dist",
-    "build": "npm run clean && npm run build:styles && npm run copy:html && npm run copy:scripts"
+    "build": "npm-run-all clean build:styles copy:*"
   },
   "author": "",
   "license": "ISC"
