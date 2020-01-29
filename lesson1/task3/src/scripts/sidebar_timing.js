@@ -1,4 +1,4 @@
-const generateNumbers = (from, to) => {
+export const generateNumbers = (from, to) => {
     let count = 0;
     let arrOfPoints = []; 
     let timeOfDay = 'AM';
