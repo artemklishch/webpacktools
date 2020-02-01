@@ -4,7 +4,7 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const webpack = require('webpack');
 
 module.exports = (env, argv) => {
-    const isProduction = argv.mode === 'production';
+    const isProduction = argv.mod === 'production';
     const config = {
         entry: './src/index.js',
         output: {
@@ -13,29 +13,24 @@ module.exports = (env, argv) => {
         module: {
             rules: [
                 {
-                    test: /.js$/,
-                    use: ['babel-loader']
-                },
-                {
                     test: /.s?css$/,
                     use: [
                         isProduction
-                        ? MiniCssExtractPlugin.loader
-                        : 'style-loader',
-                    'css-loader',
-                    'sass-loader'
-                ]
+                            ? MiniCssExtractPlugin.loader
+                            : 'style-loader',
+                        'css-loader',
+                        'sass-loader'
+                    ]
                 },
                 {
                     test: /.(jpg|png)$/,
-                    use: {
+                    use:  {
                         loader: 'url-loader',
                         options: {
-                            limit: 8192,
-                            name: '[name].[ext]',
-                            outputPath: 'images',
+                          limit: 8192,
+                          outputPath: 'images',
                         },
-                    },
+                      },
                 }
             ],
         },
@@ -47,14 +42,14 @@ module.exports = (env, argv) => {
             }),
         ],
         devServer: {
-            port:9000,
-            hot:true
+            port: 9000,
+            hot: true
         }
     };
-    if (isProduction) {
+    if(isProduction){
         config.plugins.push(new MiniCssExtractPlugin({
             filename: '[name].css',
-        }));
+        }));   
     }
     return config;
 };

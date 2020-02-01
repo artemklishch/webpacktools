@@ -1,10 +1,35 @@
-import renderProfile from './profile/renderProfile';
-import './index.css'; 
+import { renderListItems } from './list/renderer.js';
+import { addItem } from './list/additem.js';
+import { onChangeFunc } from './list/onchangefunc.js';
+import { getTasksList } from './list/tasksGateway.js';
+import { setItem } from './list/storage.js';
+import { onDeleteBtn } from './list/delete.js';
+import './index.scss';
 
-const profileData = {
-    name: 'Tom',
-    location: 'The World'
+
+
+
+document.addEventListener('DOMContentLoaded', () => {
+    getTasksList()
+        .then(arrayOfTasks => {
+            setItem('arrayOfTasks', arrayOfTasks);
+            renderListItems();
+        });
+});
+
+const onStorageChange = e => {
+    if(e.key === 'arrayOfTasks') renderListItems();
 };
-renderProfile(profileData);
+window.addEventListener('storage', onStorageChange);
 
-alert('App is ready');
+
+// 1. Get data from server 
+// 2. Save data to front-ene storage
+// 3. 
+
+
+
+
+
+
+
