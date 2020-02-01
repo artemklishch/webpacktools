@@ -6,5 +6,3 @@ const profileData = {
     location: 'The World'
 };
 renderProfile(profileData);
-
-alert('App is ready');

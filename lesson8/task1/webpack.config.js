@@ -43,7 +43,7 @@ module.exports = (env, argv) => {
         }
     };
     if(isProduction){
-        config.plugins.push( new MiniCssExtractPlugin({
+        config.plugins.push(new MiniCssExtractPlugin({
             filename: '[name].css',
         }));
     }
